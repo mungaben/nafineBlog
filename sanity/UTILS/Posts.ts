@@ -11,7 +11,13 @@ export const getPosts = async () => {
       "slug": slug.current,
       author->{name, slug, image},
       "image": mainImage.asset->url,
-      categories[]->,
+      categories->{
+        authorName,
+        content,
+        timestamp
+
+
+      },
       tags[],
       comments[]{
         authorName,
@@ -21,7 +27,7 @@ export const getPosts = async () => {
       publishedAt,
       body
 
-        }[0..9]
+        }
           
        
     `
