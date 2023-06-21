@@ -1,7 +1,8 @@
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 
-export const getPosts = async () => {
+import {Posttypes} from '@/components/Types'
+export const getPosts =async () => {
     const posts = await client.fetch(
         groq`*[_type == "post"   ]| order(_createdAt desc)
         {
@@ -15,8 +16,6 @@ export const getPosts = async () => {
         authorName,
         content,
         timestamp
-
-
       },
       tags[],
       comments[]{
