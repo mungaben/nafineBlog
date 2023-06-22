@@ -1,4 +1,6 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
+import async from '../app/page';
+import { getPosts } from '@/sanity/UTILS/Posts';
 
 interface IData {
   slug: string;
@@ -16,19 +18,29 @@ interface IData {
   publishedAt: string | null;
   body: any[][];
   _createdAt: string;
+
 }
 
 interface IStore {
   data: IData[];
-  setData: (newData: IData[]) => void;
+  setData: () => Promise<void>;
   deleteData: (id: string) => void;
   addData: (newItem: IData) => void;
 }
 
 const usePostStore = create<IStore>((set) => ({
   data: [],
-  setData: (newData) => set({ data: newData }),
+  setData: async () => {
+    const dataavail = await getPosts();
+    if (dataavail){
+      set({ data: await dataavail })
+    }
+    else {
+      set({ data: [] })
+    }
+  },
   deleteData: (id) =>
+
     set((state) => ({
       data: state.data.filter((item) => item._id !== id),
     })),
@@ -37,5 +49,5 @@ const usePostStore = create<IStore>((set) => ({
       data: [...state.data, newItem],
     })),
 }));
-
+usePostStore.getState().setData();
 export default usePostStore;

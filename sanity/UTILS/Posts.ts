@@ -12,23 +12,17 @@ export const getPosts =async () => {
       "slug": slug.current,
       author->{name, slug, image},
       "image": mainImage.asset->url,
-      categories->{
-        authorName,
-        content,
-        timestamp
+      categories[]->{
+        title,
+        description,
+        _createdAt,
       },
       tags[],
-      comments[]{
-        authorName,
-        content,
-        timestamp
-      },
+      comments[],
       publishedAt,
-      body
-
+      body,
+      
         }
-          
-       
     `
     );
     return posts;

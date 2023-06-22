@@ -1,27 +1,19 @@
 
+
 "use client"
-import usePostStore from '@/Stores/POstStore'
-import { log } from 'console'
-import React, { useCallback, useState } from 'react'
-import { useEffect } from 'react';
+import usePostStore from "@/Stores/PostStore"
+import { shallow } from "zustand/shallow"
 
 const Latest = async() => {
-  const [postdata, setpostdata] = useState([])
-  // const datavail=useCallback(()=>{
-  //   const {data}=usePostStore()
-  //   setpostdata(data)
-
-
-  // },[])
-  // console.log("data",postdata);
-  
-  //   useEffect(()=>{
-  //     datavail()
-  //   },[])
-   
-    
+  // const posts = usePostStore((state) => state.setData(),shallow)
+ 
   return (
-    <div>Latest</div>
+      
+   <div>
+    <div>
+      latest
+    </div>
+   </div>
   )
 }
 
