@@ -9,11 +9,12 @@ export default async function Home() {
 
   
   return (
-    <main className="flex h-full min-h-screen   bg-[#fafafafa]/90 text-[#000001]   ">
-   
-   <div className='mx-auto mt-40 md:mt-32'>
-    <HomePage/>
-   </div>
-    </main>
+    <main className="flex justify-center  h-full min-h-screen overflow-hidden  text-[#000001]">
+    <div className="flex justify-center ">
+      <div className="overflow-hidden ">
+        <HomePage />
+      </div>
+    </div>
+  </main>
   )
 }

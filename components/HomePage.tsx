@@ -3,12 +3,12 @@ import Posts from './Posts'
 
 const HomePage = () => {
   return (
-    <div className='flex mx-auto overflow-x-auto border-2 border-black md:mx-10 sm:mt-20 no-scrollbar'>
+    <div className='flex px-2 bg-yellow-600 border-2 border-black no-scrollbar '>
 
     
-    <center className='flex'>
+    <center className='mx-auto '> 
     <section className=''>
-      <div className=''>
+      <div className='w-screen'>
         <Posts/>
       </div>
     </section>

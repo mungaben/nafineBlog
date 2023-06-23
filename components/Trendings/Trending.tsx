@@ -40,19 +40,21 @@ const Trending = () => {
   console.log("dataAvailable", dataAvailable);
 
   return (
-    <div className="p-3 m-2 bg-[#fafafafa] ">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 bg-[#fafafafa]/90 overflow-scroll no-scrollbar   ">
+    <div className="flex justify-center w-screen m-1 p-0.5 md:p-3 bg-green-400 md:m-2">
+      <div className="gap-4 sm:grid-cols-2 md:grid-cols-4 bg-[#fafafafa]/90  mx-auto overflow-x-auto no-scrollbar grid grid-flow-row-dense grid-cols-3    ">
         {dataAvailable &&
           dataAvailable.map((post, index) => (
-            <div key={post?._id || index} className="flex m-2 shadow-md border-x-[1px] border-gray-600/70 overflow-clip min-w-min max-w-xs">
-              <h1 className="truncate text-bold">
-                <Link href={`/Content/${post?._id}`} className=" text-[#000001]/90 md:font-medium font-normal  md:p-4 p-2   overflow-scroll max-w-sm no-scrollbar">
-                  {post?.slug.slice(0,30)}...
+            <div key={post?._id || index} className="grid m-2 shadow-md border-x-[1px] border-gray-600/70  min-w-min max-w-xs ">
+              <p className="">
+                <Link href={`/Content/${post?._id}`} className="bg-black ">
+                  <h1>{post?.slug}....</h1 >
                 </Link>
-              </h1>
+                
+              </p>
             </div>
           ))}
       </div>
+     
     </div>
   );
 };
