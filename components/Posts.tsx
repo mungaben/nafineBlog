@@ -4,11 +4,11 @@ import Trending from './Trendings/Trending'
 
 const Posts = () => {
   return (
-    <div>
-        <div>
+    <div className='flex-col w-full '>
+        <div >
            <Latest/>
         </div>
-        <div>
+        <div className='w-full '>
             <Trending/>
         </div>
     </div>
