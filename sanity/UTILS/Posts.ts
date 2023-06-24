@@ -12,6 +12,8 @@ export const getPosts =async () => {
       "slug": slug.current,
       author->{name, slug, image},
       "image": mainImage.asset->url,
+     
+      
       categories[]->{
         title,
         description,

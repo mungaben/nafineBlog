@@ -3,7 +3,7 @@ import Posts from './Posts'
 
 const HomePage = () => {
   return (
-    <div className='flex px-2 bg-yellow-600 border-2 border-black no-scrollbar '>
+    <div className='flex px-2  border-2 border-black no-scrollbar '>
 
     
     <center className='mx-auto '> 
