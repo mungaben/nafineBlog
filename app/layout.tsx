@@ -19,8 +19,12 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-[#fafafa]/90 no-scrollbar" >
         <NavBar/>
+      
+        {children}
+        
+        
         <Analytics/>
-        {children}</body>
+        </body>
     </html>
   )
 }
