@@ -18,7 +18,7 @@ interface AppProps {
 const Trending = () => {
   const posts = usePostStore((state) => state.data, shallow);
   const SetPosts=usePostStore((state) => state.setData);
-  console.log("setposts", SetPosts);
+  // console.log("setposts", SetPosts);
 
   
   

@@ -11,7 +11,7 @@ interface PropsId {
   id: string;
 }
 const Contents = async ({ id }: PropsId) => {
-  const dataavil = usePostStore((state) => state.data, shallow);
+  const dataavil = usePostStore((state) => state.data,shallow);
   console.log("data avil", id);
   // get data matching _id
   const datav = useMemo(() => {
@@ -19,9 +19,9 @@ const Contents = async ({ id }: PropsId) => {
   }, [dataavil]);
   // console.log( "datav", datav);
   
-  if (!datav || datav.length === 0) {
-    return <div>No data available for the given ID</div>;
-  }
+  // if (datav.length === 0) {
+  //   return <div>No data available for the given ID</div>;
+  // }
 
   // const parsedBody = useMemo((data: String[]) => JSON.parse(data), [datav]);
 
