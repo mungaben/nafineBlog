@@ -23,7 +23,7 @@ export default function RootLayout({
         {children}
         
         
-        <Analytics/>
+        <Analytics mode={'production'} />;
         </body>
     </html>
   )
