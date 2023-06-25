@@ -26,6 +26,7 @@ interface IStore {
   setData: () => Promise<void>;
   deleteData: (id: string) => void;
   addData: (newItem: IData) => void;
+  getPost: (id: string) => void;
 }
 
 const usePostStore = create<IStore>((set) => ({
@@ -47,6 +48,10 @@ const usePostStore = create<IStore>((set) => ({
   addData: (newItem) =>
     set((state) => ({
       data: [...state.data, newItem],
+    })),
+  getPost: (id) =>
+    set((state) => ({
+      data: state.data.filter((item) => item._id !== id),
     })),
 }));
 usePostStore.getState().setData();

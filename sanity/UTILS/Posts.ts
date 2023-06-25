@@ -10,8 +10,9 @@ export const getPosts =async () => {
  _createdAt,
       title,
       "slug": slug.current,
-      author->{name, slug, image},
+      author->{name, slug, "image": image.asset->{url}},
       "image": mainImage.asset->url,
+ 
      
       
       categories[]->{
