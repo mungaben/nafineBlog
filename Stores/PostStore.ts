@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import async from '../app/page';
 import { getPosts } from '@/sanity/UTILS/Posts';
+import { PortableTextBlock } from 'sanity';
 
 interface IData {
   slug: string;
@@ -16,7 +17,7 @@ interface IData {
   image: string;
   categories: any[] | null;
   publishedAt: string | null;
-  body: any[][];
+  body: PortableTextBlock;
   _createdAt: string;
 
 }

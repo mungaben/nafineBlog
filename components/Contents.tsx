@@ -5,6 +5,8 @@ import { shallow } from "zustand/shallow";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
+
+
 interface PropsId {
   id: string;
 }
@@ -17,6 +19,11 @@ const Contents = async ({ id }: PropsId) => {
   }, [dataavil]);
   // console.log( "datav", datav);
   
+  if (!datav || datav.length === 0) {
+    return <div>No data available for the given ID</div>;
+  }
+
+  // const parsedBody = useMemo((data: String[]) => JSON.parse(data), [datav]);
 
   return (
     <section className=" flex-col ">
@@ -50,7 +57,7 @@ const Contents = async ({ id }: PropsId) => {
                 </div>
                 <div>
                   <span className=" md:p-4 font-bold text-sm  p-2">
-                    {data.body.length * 0.5} min read
+                    {10 * 0.5} min read
                   </span>
                 </div>
               </div>
