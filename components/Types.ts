@@ -162,4 +162,21 @@ interface Post {
   
   
   
-  
+export interface IData {
+  slug: string;
+  tags: string[] | null;
+  comments: any[] | null;
+  _id: string;
+  title: string;
+  author: {
+    slug: any;
+    image: any;
+    name: string;
+  };
+  image: string;
+  categories: any[] | null;
+  publishedAt: string | null;
+  body: PortableTextBlock;
+  _createdAt: string;
+
+}

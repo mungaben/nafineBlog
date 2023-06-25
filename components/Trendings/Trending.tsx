@@ -37,18 +37,18 @@ const Trending = () => {
 
  useEffect(() => {
   
-   posts.length===0&& SetPosts();
+   SetPosts();
   
   
- }, [posts]);
+ }, []);
 
   return (
     <div className="flex justify-center w-screen m-1 p-0.5 md:p-3  md:m-2">
-      <div className="gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-4 bg-[#fafafafa]/90  mx-auto overflow-x-auto no-scrollbar grid grid-flow-row-dense     ">
+      <div className="gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 md:gap-2  lg:grid-cols-4 bg-[#fafafafa]/90  mx-auto overflow-x-auto no-scrollbar grid grid-flow-row-dense     ">
         {dataAvailable &&
           dataAvailable.map((post, index) => (
             <div
-              key={post?._id || index}
+              key={post?._id || index} 
               className="grid m-2 shadow-md border-x-[1px] border-gray-600/70  min-w-min max-w-xs "
             >
               <div className=" object-contain bg-green-500 flex justify-center items-center object-center  ">
