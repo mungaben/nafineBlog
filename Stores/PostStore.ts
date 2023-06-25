@@ -28,18 +28,32 @@ interface IStore {
   deleteData: (id: string) => void;
   addData: (newItem: IData) => void;
   getPost: (id: string) => void;
+  loading: boolean;
+  hasErrors: boolean;
 }
 
 const usePostStore = create<IStore>((set) => ({
   data: [],
+  loading: false,
+  hasErrors: false,
   setData: async () => {
     const dataavail = await getPosts();
-    if (dataavail){
+    set(() => ({ loading: true }));
+    try {
+     
+    if (dataavail.length > 0) {
+    
       set({ data: await dataavail })
+      set(()=>({loading: false}))
     }
-    else {
-      set({ data: [] })
+
+    }catch (error) {
+        set(() =>({hasErrors: true}))
+        set({ data: [] })
+
     }
+    
+  
   },
   deleteData: (id) =>
 
@@ -55,5 +69,6 @@ const usePostStore = create<IStore>((set) => ({
       data: state.data.filter((item) => item._id !== id),
     })),
 }));
-usePostStore.getState().setData();
+
+
 export default usePostStore;

@@ -12,7 +12,7 @@ interface PropsId {
 }
 const Contents = async ({ id }: PropsId) => {
   const dataavil = usePostStore((state) => state.data, shallow);
-  // console.log("data avil", dataavil);
+  console.log("data avil", id);
   // get data matching _id
   const datav = useMemo(() => {
     return dataavil?.filter((data) => data._id === id);

@@ -1,13 +1,11 @@
 "use client";
-import React, { useCallback, useEffect, useMemo } from "react";
 import usePostStore from "@/Stores/PostStore";
+import { useEffect, useMemo } from "react";
+import { TypedObject, set } from "sanity";
 import { shallow } from "zustand/shallow";
-import { PortableText } from "@portabletext/react";
-import { Block } from "typescript";
-import { TypedObject } from "sanity";
 // import Block  from '@sanity/types';
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Post {
   body: TypedObject[] | undefined;
@@ -19,6 +17,11 @@ interface AppProps {
 
 const Trending = () => {
   const posts = usePostStore((state) => state.data, shallow);
+  const SetPosts=usePostStore((state) => state.setData);
+  console.log("setposts", SetPosts);
+
+  
+  
   const dataAvailable = useMemo(() => {
     return posts.map((post) => {
       const filteredCategories = post.categories?.filter((category) =>
@@ -31,6 +34,13 @@ const Trending = () => {
       return null;
     });
   }, [posts]);
+
+ useEffect(() => {
+  
+   posts.length===0&& SetPosts();
+  
+  
+ }, [posts]);
 
   return (
     <div className="flex justify-center w-screen m-1 p-0.5 md:p-3  md:m-2">
@@ -67,3 +77,5 @@ const Trending = () => {
 };
 
 export default Trending;
+
+
