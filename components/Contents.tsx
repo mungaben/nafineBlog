@@ -14,7 +14,7 @@ const Contents = async ({ id }: PropsId) => {
   // get data matching _id
   const datav = useMemo(() => {
     return dataavil?.filter((data) => data._id === id);
-  }, [id]);
+  }, [dataavil]);
   // console.log( "datav", datav);
   
 
