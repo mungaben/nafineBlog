@@ -41,9 +41,9 @@ const page = () => {
             dataAvailable.map((post, index) => (
               <div
                 key={post?._id || index}
-                className="grid m-2 shadow-md border-x-[1px] border-gray-600/70  min-w-min max-w-xs "
+                className="grid m-2 shadow-md border-x-[1px]   min-w-min max-w-xs "
               >
-                <div className=" object-contain bg-green-500 flex justify-center items-center object-center  ">
+                <div className=" object-contai flex justify-center items-center object-center  ">
                   <Image
                     src={post?.image || "/blog/blog.jpg"}
                     alt={post?.title.slice(0, 20) || "babla"}
@@ -53,7 +53,7 @@ const page = () => {
                   />
                 </div>
 
-                <div className=" text-black">
+                <div className=" text-black mx-auto flex">
                   <Link
                     href={`/Content/${post?._id}`}
                     className="hover:underline flex justify-start items-start"

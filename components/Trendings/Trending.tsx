@@ -44,7 +44,7 @@ const Trending = () => {
           dataAvailable.map((post, index) => (
             <div
               key={post?._id || index}
-              className="flex m-2 md:flex-col lg:flex-col justify-center items-center  "
+              className="flex m-2 md:flex-col lg:flex-col justify-center items-center "
             >
               {/* <div className=" object-contain flex  items-center  ">
                 <Image
@@ -69,17 +69,17 @@ const Trending = () => {
                   />
                 </div>
               </div>
-              <div className="bg-green-300">
-                <div className=" flex   ">
+              <div className=" p-4 flex-col justify-center  mx-auto  overflow-x-hidden gap-4">
+                <div className=" flex truncate  space-x-4  ">
                   {
                     // loop post.categories add alink to category
                     post?.categories?.map((category, idex) => (
-                      <div key={idex} className=" flex-row mx-2 text-sm">
+                      <div key={idex} className=" flex-row  text-sm mx-auto">
                         <Link
                           href={`/`}
                           className="hover:underline  flex-row  items-start"
                         >
-                          <h3 className="text-[ 1.5rem ] font-light capitalize ">
+                          <h3 className="text-2xl  font-light capitalize ">
                             {category?.title}
                           </h3>
                         </Link>
@@ -91,9 +91,9 @@ const Trending = () => {
                 <div className=" text-black text-start mx-2">
                   <Link
                     href={`/Content/${post?._id}`}
-                    className="hover:underline flex justify-start items-start"
+                    className="hover:underline flex justify-start items-start text-lg font-semibold"
                   >
-                    <h1>{post?.slug.slice(0, 40)}....</h1>
+                    <p>{post?.slug}....</p>
                   </Link>
                 </div>
               </div>
