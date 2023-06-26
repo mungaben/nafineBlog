@@ -5,7 +5,13 @@ import { PortableTextBlock } from 'sanity';
 
 interface IData {
   slug: string;
-  tags: string[] | null;
+  tags?:{
+    name:string;
+    slug:string;
+    _key:string;
+    _type:string;
+    description:string;
+  }[];
   comments: any[] | null;
   _id: string;
   title: string;
@@ -14,11 +20,12 @@ interface IData {
     image: any;
     name: string;
   };
-  image: string;
+  image?: string;
   categories: any[] | null;
   publishedAt: string | null;
   body: PortableTextBlock;
   _createdAt: string;
+  estimatedReadingTime: number;
 
 }
 

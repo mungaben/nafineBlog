@@ -24,6 +24,7 @@ export const getPosts =async () => {
       comments[],
       publishedAt,
       body,
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       
         }
     `

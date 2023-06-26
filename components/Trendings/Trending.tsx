@@ -17,11 +17,9 @@ interface AppProps {
 
 const Trending = () => {
   const posts = usePostStore((state) => state.data, shallow);
-  const SetPosts=usePostStore((state) => state.setData);
+  const SetPosts = usePostStore((state) => state.setData);
   // console.log("setposts", SetPosts);
 
-  
-  
   const dataAvailable = useMemo(() => {
     return posts.map((post) => {
       const filteredCategories = post.categories?.filter((category) =>
@@ -35,12 +33,9 @@ const Trending = () => {
     });
   }, [posts]);
 
- useEffect(() => {
-  
-   SetPosts();
-  
-  
- }, []);
+  useEffect(() => {
+    SetPosts();
+  }, []);
 
   return (
     <div className="flex justify-center w-screen m-1 p-0.5 md:p-3  md:m-2">
@@ -48,7 +43,7 @@ const Trending = () => {
         {dataAvailable &&
           dataAvailable.map((post, index) => (
             <div
-              key={post?._id || index} 
+              key={post?._id || index}
               className="grid m-2 shadow-md border-x-[1px] border-gray-600/70  min-w-min max-w-xs "
             >
               <div className=" object-contain bg-green-500 flex justify-center items-center object-center  ">
@@ -77,5 +72,3 @@ const Trending = () => {
 };
 
 export default Trending;
-
-
