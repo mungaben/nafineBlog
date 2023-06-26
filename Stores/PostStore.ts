@@ -21,7 +21,11 @@ interface IData {
     name: string;
   };
   image?: string;
-  categories: any[] | null;
+  categories:{
+    title:string;
+    description:string;
+    _createdAt:string;
+  }[];
   publishedAt: string | null;
   body: PortableTextBlock;
   _createdAt: string;

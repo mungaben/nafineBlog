@@ -37,7 +37,7 @@ const Contents = ({ id }: PropsId) => {
   });
 
   return (
-    <section className="flex-col mb-40 ">
+    <section className="flex-col mb-40 md:mb-72 ">
       <div className="flex-col mx-auto" key={data._id}>
         <div>
           {/* tags display name */}
