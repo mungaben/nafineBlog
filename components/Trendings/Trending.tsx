@@ -1,6 +1,6 @@
 "use client";
 import usePostStore from "@/Stores/PostStore";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { TypedObject, set } from "sanity";
 import { shallow } from "zustand/shallow";
 // import Block  from '@sanity/types';
@@ -14,10 +14,12 @@ interface Post {
 interface AppProps {
   post?: Post;
 }
+console.log("post data available");
 
 const Trending = () => {
   const posts = usePostStore((state) => state.data, shallow);
   const SetPosts = usePostStore((state) => state.setData);
+  const [fetch, setfetch] = useState(false);
   // console.log("setposts", SetPosts);
 
   const dataAvailable = useMemo(() => {
@@ -34,52 +36,44 @@ const Trending = () => {
   }, [posts]);
 
   useEffect(() => {
-    SetPosts();
-  }, []);
+    if (!dataAvailable) {
+      SetPosts();
+      setfetch(true);
+    }
+  }, [fetch]);
+
+  console.log("datavailable", dataAvailable[0]);
 
   return (
-    <div className="flex justify-start w-screen m-1 p-0.5 md:p-3  md:m-2 ">
-      <div className="gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:gap-2  lg:grid-cols-4 bg-[#fafafafa]/90  mx-auto overflow-x-auto no-scrollbar grid grid-flow-row-dense ">
+    <div className="flex justify-start w-screen m-1 p-0.5 md:p-3  md:m-2  ">
+      <div className="gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 md:gap-2  lg:grid-cols-3 xl:grid-cols-4 bg-[#fafafafa]/90  mx-auto overflow-x-auto no-scrollbar grid grid-flow-row-dense ">
         {dataAvailable &&
           dataAvailable.map((post, index) => (
             <div
               key={post?._id || index}
-              className="flex m-2 md:flex-col lg:flex-col justify-center items-center "
+              className="flex items-center justify-center m-2 md:flex-col lg:flex-col "
             >
-              {/* <div className=" object-contain flex  items-center  ">
-                <Image
-                  src={post?.image || "/blog/blog.jpg"}
-                  alt={post?.title.slice(0, 20) || "post alt tag"}
-                  width={200}
-                  height={32}
-                  priority
-                  className="bg-[#fafafa]/50 object-fill  md:h-32 h-24 mx-2 hover:object-scale-down "
-                />
-              </div> */}
-
-              <div className="flex flex-wrap justify-center md:items-center">
-                <div className=" w-[60px]  h-[60px] sm:w-[230px] sm:h-[230px] md:h-[200px]  md:w-full flex">
+              <div className="grid flex-wrap justify-center md:items-center">
+                <div className="w-[60px] h-[60px] sm:w-[230px] sm:h-[230px] md:w-full">
                   <Image
                     src={post?.image || "/blog/blog.jpg"}
                     alt={post?.title.slice(0, 20) || "post alt tag"}
                     width={200}
                     height={32}
                     priority
-                    className="shadow-lg rounded max-w-full h-auto align-middle border-none object-fill"
+                    className="object-cover w-full h-full align-middle border-none rounded shadow-lg"
                   />
                 </div>
               </div>
-              <div className=" p-4 flex-col justify-center  mx-auto  overflow-x-hidden gap-4">
-                <div className=" flex truncate  space-x-4  ">
+
+              <div className="grid flex-col items-start justify-start gap-4 p-2 mx-auto">
+                <div className="flex items-start w-full p-2 overflow-x-scroll sm:flex md:flex no-scrollbar">
                   {
                     // loop post.categories add alink to category
                     post?.categories?.map((category, idex) => (
-                      <div key={idex} className=" flex-row  text-sm mx-auto">
-                        <Link
-                          href={`/`}
-                          className="hover:underline  flex-row  items-start"
-                        >
-                          <h3 className="text-2xl  font-light capitalize ">
+                      <div key={idex} className="mx-2 ">
+                        <Link href={`/`} className="hover:underline">
+                          <h3 className="text-xs font-light capitalize ">
                             {category?.title}
                           </h3>
                         </Link>
@@ -88,10 +82,10 @@ const Trending = () => {
                   }
                 </div>
 
-                <div className=" text-black text-start mx-2">
+                <div className="flex mx-2 text-black text-start">
                   <Link
                     href={`/Content/${post?._id}`}
-                    className="hover:underline flex justify-start items-start text-lg font-semibold"
+                    className="flex items-start justify-start text-lg font-semibold hover:underline"
                   >
                     <p>{post?.slug}....</p>
                   </Link>
