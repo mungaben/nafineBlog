@@ -8,6 +8,9 @@ import { useParams } from "next/navigation";
 
 import { IData } from "./Types";
 import Link from "next/link";
+import router from "next/router";
+import { Metadata } from "next";
+import { NextSeo } from "next-seo";
 
 interface PropsId {
   id: string;
@@ -16,40 +19,52 @@ interface PropsId {
 const Contents = ({ id }: PropsId) => {
   const [dataFetched, setDataFetched] = useState(false);
   const [filteredData, setdisplaypost] = useState<IData[]>([]);
+  console.log("dataFetched", dataFetched);
+  console.log("filteredData", filteredData);
+
   const params = useParams();
   const dataavil = usePostStore((state) => state.data, shallow);
+
   const setdata = usePostStore(
     (state: { setData: () => Promise<void> }) => state.setData,
     shallow
   );
+   
 
+  
   const filteredDatas = dataavil?.filter(
     (data: { _id: string }) => data._id === params.id
   );
 
-  console.log(filteredData);
-
   if (!filteredDatas || filteredDatas.length === 0) {
     return null;
   }
-
-  useEffect(() => {
-    setdisplaypost([filteredDatas[0]]);
   
-    if (!dataavil) {
-      setdata();
-    }
-    if (!filteredDatas) {
+ 
+  // console.log(filteredData);
+  useEffect(() => {
+    setdisplaypost(filteredDatas);
+    // console.log("dataavail 1st on effecrt", dataavil);
+
+    const fetchData = async () => {
+      await setdata();
       const filteredData = dataavil?.filter(
         (data: { _id: string }) => data._id === params.id
       );
-      setdisplaypost(filteredData[0] ? [filteredData[0]] : []);
+      console.log("filteredData", filteredData);
+
+      setdisplaypost([filteredData[0]]);
+      setDataFetched(true);
+    };
+    if (dataavil.length === 0) {
+      fetchData();
+      // console.log("dataavil lst wen not populated", dataavil);
     }
   }, []);
 
   const data = filteredData[0];
   console.log("datas", data);
-  
+
   const formattedDate = new Date(data?._createdAt).toLocaleString("en-US", {
     weekday: "short",
     day: "numeric",
@@ -61,25 +76,20 @@ const Contents = ({ id }: PropsId) => {
 
   return (
     <section className="flex-col mb-80 ">
+      <NextSeo title={data?.title} description={data?.slug} />
       <div className="flex-col mx-auto " key={data?._id}>
         <div className="">
           {/* tags display name */}
-          {data?.tags?.map(
-            (tag:{
-              _key: string;
-              name: string;
-
-            }) => (
-              <span className="text-sm text-gray-300 " key={tag._key}>
-                <Link
-                  href={`/Tags/${tag.name}`}
-                  className="hover:underline hover:text-blue-400/50 "
-                >
-                  {tag.name}
-                </Link>
-              </span>
-            )
-          )}
+          {data?.tags?.map((tag: { _key: string; name: string }) => (
+            <span className="text-sm text-gray-300 " key={tag._key}>
+              <Link
+                href={`/Tags/${tag.name}`}
+                className="hover:underline hover:text-blue-400/50 "
+              >
+                {tag.name}
+              </Link>
+            </span>
+          ))}
         </div>
         <h1 className="justify-start p-4 text-2xl font-bold text-black">
           {data?.title}
