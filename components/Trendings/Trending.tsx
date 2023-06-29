@@ -42,13 +42,13 @@ const Trending = () => {
   }, [posts]);
 
   useEffect(() => {
-    if (!dataAvailable) {
+    if (posts.length === 0) {
       SetPosts();
       // setfetch(true);
     }
-  }, [posts]);
+  }, []);
 
-  console.log("datavailable", dataAvailable);
+  // console.log("datavailable", dataAvailable);
 
   return (
     <div className="flex justify-start w-screen m-1 p-0.5 md:p-3  md:m-2  ">
