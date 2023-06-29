@@ -19,21 +19,17 @@ interface AppProps {
 const Trending = () => {
   const posts = usePostStore((state) => state.data, shallow);
   const SetPosts = usePostStore((state) => state.setData);
-  const [fetch, setfetch] = useState(false);
-  // console.log("setposts", SetPosts);
 
+const [fetched, setfetched] = useState(false)
   
 
   const dataAvailable = useMemo(() => {
     return posts.map((post) => {
-      console.log("post", post);
+   
       
       const filteredCategories = post.categories?.filter((category) =>
         category.title.includes("trending")
       );
-      console.log("filteredCategories", filteredCategories);
-      
-
       if (filteredCategories) {
         return post;
       }
@@ -44,11 +40,12 @@ const Trending = () => {
   useEffect(() => {
     if (posts.length === 0) {
       SetPosts();
-      // setfetch(true);
+      setfetched(true);
+     
     }
-  }, []);
+  }, [fetched]);
 
-  // console.log("datavailable", dataAvailable);
+
 
   return (
     <div className="flex justify-start w-screen m-1 p-0.5 md:p-3  md:m-2  ">

@@ -21,9 +21,9 @@ const Footer = () => {
     setfoot((prev) => !prev);
   };
   return (
-    <div className="relative ">
-      <div className="absolute z-50 h-10 my-auto bottom-5 ">
-        <div className={`flex items-center justify-center w-10 rounded-r-lg shadow-md ${foot? "bg-[#fafafa]":"bg-rose-500"} md:h-20 shadow-slate-200`}>
+    <div className="relative bottom-0">
+      <div className="absolute z-50 h-10 my-auto bottom-0">
+        <div className={` bottom-0 flex items-center fixed justify-center w-10 rounded-r-lg shadow-md ${foot? "bg-[#fafafa]":"bg-rose-500"} md:h-20 shadow-slate-200`}>
           <button
             type="button"
             className="m-4 ml-0"
@@ -76,7 +76,7 @@ const Footer = () => {
 
         )}
       </div>
-      <div className="bottom-0 flex items-center justify-center ">
+      <div className="bottom-0 flex items-center justify-center fixed mx-auto left-0 right-0 text-[#fafafafa]/40 z-0 ">
         <h4>
         By mungaben &copy; {new Date().getFullYear()}
         </h4>

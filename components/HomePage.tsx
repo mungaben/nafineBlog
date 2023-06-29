@@ -3,11 +3,11 @@ import Posts from './Posts'
 import Headline from './Headline'
 
 const HomePage = () => {
-  console.log("homrpage");
+ 
   
   return (
+   
     <div className='flex w-full px-2 no-scrollbar'>
-
     
     <center className=''>
      <section>
@@ -16,7 +16,7 @@ const HomePage = () => {
       </div>
      </section>
     <section className='w-screen md:w-9/12 sm:w-4/5'>
-      <div className='flexjustify-center '>
+      <div className=' '>
         <Posts/>
       </div>
     </section> 

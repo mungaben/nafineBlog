@@ -164,7 +164,13 @@ interface Post {
   
 export interface IData {
   slug: string;
-  tags: string[] | null;
+  tags?:{
+    name:string;
+    slug:string;
+    _key:string;
+    _type:string;
+    description:string;
+  }[];
   comments: any[] | null;
   _id: string;
   title: string;
@@ -173,10 +179,15 @@ export interface IData {
     image: any;
     name: string;
   };
-  image: string;
-  categories: any[] | null;
+  image?: string;
+  categories:{
+    title:string;
+    description:string;
+    _createdAt:string;
+  }[];
   publishedAt: string | null;
   body: PortableTextBlock;
   _createdAt: string;
+  estimatedReadingTime: number;
 
 }
