@@ -11,7 +11,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
   ![Nafine simple BLog](/public/blog/BlogImage.png "Nafine Blog")
 
-  
+  post by id/blog slugname /tag name
+  ![Nafine simple BLog](/public/blog/ByblogSlugName.png "Nafine Blog")
+
+
+
   
 ## Getting Started
 
