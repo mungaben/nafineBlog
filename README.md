@@ -1,5 +1,18 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+  
+  
+  simple blog with snaity and next13 using approuter
+
+  
+  ![Nafine Blog with Next 13 and sanity.io](https://nafine-blog.vercel.app/)
+
+
+  ![Nafine simple BLog](/public/blog/BlogImage.png "Nafine Blog")
+
+  
+  
 ## Getting Started
 
 First, run the development server:
