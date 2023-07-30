@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
   simple blog with snaity and next13 using approuter
 
   
-  ![Nafine Blog with Next 13 and sanity.io](https://nafine-blog.vercel.app/)
+  [Nafine Blog with Next 13 and sanity.io](https://nafine-blog.vercel.app/)
 
 
   ![Nafine simple BLog](/public/blog/BlogImage.png "Nafine Blog")
