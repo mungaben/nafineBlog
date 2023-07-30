@@ -9,7 +9,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
   ![Nafine Blog with Next 13 and sanity.io](https://nafine-blog.vercel.app/)
 
 
-  ![Nafine simple BLog](/public/blog/BlogImage.png "Nafine Blog")
+  [Nafine simple BLog](/public/blog/BlogImage.png "Nafine Blog")
 
   
   
